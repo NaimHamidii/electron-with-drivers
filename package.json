@@ -1,0 +1,107 @@
+{
+  "name": "manager",
+  "version": "1.0.0",
+  "description": "AoC manager",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "webpack --config webpack.common.js --watch",
+    "test": "jest",
+    "build": "webpack --config webpack.prod.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "make:linux": "electron-builder --linux",
+    "make:macos": "electron-builder --mac",
+    "make:win": "electron-builder --win"
+  },
+  "author": "ABUS",
+  "license": "ISC",
+  "build": {
+    "productName": "AoC Manager",
+    "appId": "abus.aocmanager",
+    "files": [
+      "build/*",
+      "assets/**/*",
+      "index.html",
+      "main.js",
+      "resources/*"
+    ],
+    "win": {
+      "icon": "assets/img/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "publish": null,
+    "nsis": {
+      "license": "LICENSE.txt",
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "perMachine": true,
+      "displayLanguageSelector": true,
+      "createDesktopShortcut": true,
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": true,
+      "include": "installer.nsh"
+    },
+    "extraFiles": [
+      "resources"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/img/icon.ico",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 430,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "category": "Development"
+    }
+  },
+  "dependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.10.2",
+    "@types/react": "^17.0.26",
+    "@types/react-dom": "^17.0.9",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.42.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
+    "typescript": "^4.4.3",
+    "webpack": "^5.54.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.15.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.1",
+    "electron-builder": "^22.13.1",
+    "electron": "^15.0.0",
+    "jest": "^27.2.4",
+    "webpack-merge": "^5.8.0"
+  }
+}
